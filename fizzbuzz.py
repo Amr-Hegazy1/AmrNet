@@ -4,7 +4,9 @@ from amrnet.train import train
 from amrnet.nn import NeuralNet
 from amrnet.layers import Linear, Tanh
 
-from amrnet.optimizers import SGD
+from amrnet.optimizers import SGD, Momentum
+
+from amrnet.loss import TSE, MSE, LogCosh, MAE
 
 
 
@@ -59,7 +61,7 @@ net = NeuralNet([
     
 ])
 
-train(net,inputs, targets,optimizer=SGD(0.001))
+train(net,inputs, targets,optimizer=SGD(0.001),loss=MAE())
 
 for x in range(1, 101):
     

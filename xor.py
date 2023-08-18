@@ -7,7 +7,7 @@ import numpy as np
 
 from amrnet.train import train
 from amrnet.nn import NeuralNet
-from amrnet.layers import Linear, Tanh
+from amrnet.layers import Linear, Tanh, LeakyRelU
 
 
 inputs = np.array([
@@ -28,7 +28,7 @@ targets = np.array([
 
 net = NeuralNet([
     Linear(2,2),
-    Tanh(),
+    LeakyRelU(0.5),
     Linear(2,2)
 ])
 

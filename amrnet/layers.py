@@ -86,24 +86,26 @@ class Activation(Layer):
     Applies a function elementwise to its inputs
     """
     
-    def __init__(self, fn , fn_prime) -> None:
+    def __init__(self, fn , fn_prime, *args) -> None:
         super().__init__()
         
         self.fn = fn
         
         self.fn_prime = fn_prime
         
+        self.args = args
+        
         
     def forward(self, inputs: Tensor) -> Tensor:
         
         self.inputs = inputs
         
-        return self.fn(inputs)
+        return self.fn(inputs,*self.args)
     
     def backward(self, grad: Tensor) -> Tensor:
         
         
-        return self.fn_prime(self.inputs) * grad
+        return self.fn_prime(self.inputs,*self.args) * grad
         
         
         
@@ -126,3 +128,33 @@ class Tanh(Activation):
     
     def __init__(self) -> None:
         super().__init__(tanh, tanh_prime)
+        
+
+def relu(x):
+    return np.maximum(0,x)     
+
+def relu_prime(x):
+    
+    return 1 * (x > 0)
+      
+        
+class RelU(Activation):
+    
+    def __init__(self) -> None:
+        
+        super().__init__(relu, relu_prime)
+        
+        
+def leaky_relu(x,negative_slope):
+    
+    return np.maximum(x * negative_slope,x)
+
+def leaky_relu_prime(x,negative_slope):
+    
+    return 1 * (x > 0) + negative_slope * (x <= 0)
+    
+        
+class LeakyRelU(Activation):
+    
+    def __init__(self, negative_slope=0.01) -> None:
+        super().__init__(leaky_relu, leaky_relu_prime,negative_slope)

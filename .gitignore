@@ -1,1 +1,6 @@
 __pycache__
+.gitignore
+PyPi_tokens.txt
+build
+dist
+amrnet.egg-info
