@@ -26,23 +26,23 @@ class SGD(Optimizer):
             param -= self.lr * grad
             
             
-class Momentum(SGD):
+class AdaGrad(SGD):
     
-    def __init__(self, lr: float = 0.01, momentum: float = 0.9) -> None:
-        
+    def __init__(self, lr: float = 0.01, epsilon: float = 1e-5) -> None:
         super().__init__(lr)
         
-        self.momentum = momentum
-        
+        self.epsilon = epsilon
         
     def step(self, net: NeuralNet) -> None:
         
-        v = 0
+        i = 0
         
         for param, grad in net.params_and_grads():
             
-            v = self.momentum * v + (1 - self.momentum) * grad
+            param -= self.lr / (np.sqrt(self.epsilon) + np.sqrt(grad * grad)) * grad
             
             
             
-            param -=  self.lr * v
+            
+                
+           
