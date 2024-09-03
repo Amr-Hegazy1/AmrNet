@@ -3,15 +3,15 @@ function that trains our neural net
 """
 
 
-from amrnet.tensor import Tensor
+from tensor import Tensor
 
-from amrnet.nn import NeuralNet
+from nn import NeuralNet
 
-from amrnet.loss import Loss, TSE
+from loss import Loss, TSE
 
-from amrnet.optimizers import Optimizer, SGD
+from optimizers import Optimizer, SGD
 
-from amrnet.data import DataIterator, BatchIterator
+from data import DataIterator, BatchIterator
 
 
 

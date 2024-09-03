@@ -6,7 +6,7 @@ from typing import Any
 import numpy as np
 
 
-from amrnet.tensor import Tensor
+from tensor import Tensor
 
 
 class DataIterator:

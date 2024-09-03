@@ -24,6 +24,9 @@ pip install amrnet==0.1.0
     2. ReLU
     3. Tanh
     4. LeakyReLU
+    5. Sigmoid
+    6. Softmax
+    7. Dropout
     <br></br>
 - [Neural Networks](./amrnet/nn.py)
 - [Loss Functions](./amrnet/loss.py) :
@@ -32,6 +35,7 @@ pip install amrnet==0.1.0
     2. TSE
     3. MAE
     4. LogCosh
+    5. Huber
     <br></br>
 - [Optimizers](./amrnet/optim.py) :
 

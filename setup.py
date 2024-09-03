@@ -36,5 +36,5 @@ setup(
     ],
     packages=["amrnet"],
     include_package_data=True,
-    install_requires=["numpy"]
+    install_requires=["numpy", "numba", "typing-extensions"]
 )

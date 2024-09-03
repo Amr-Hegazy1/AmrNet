@@ -3,9 +3,9 @@ A neural net is basically a collection of layers
 """
 
 
-from amrnet.tensor import Tensor
+from tensor import Tensor
 
-from amrnet.layers import Layer
+from layers import Layer
 
 
 class NeuralNet:
